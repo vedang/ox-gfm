@@ -266,8 +266,14 @@ holding export options."
                                       (org-gfm-format-toc headline info))
                                     headlines "\n")
                          ""))
-         (toc-tail (if headlines "\n\n" "")))
-    (org-trim (concat toc-string toc-tail contents "\n" (org-gfm-footnote-section info)))))
+         (toc-head (if headlines "<div class=\"orgtoc\">\n" ""))
+         (toc-tail (if headlines "\n</div>\n\n" "")))
+    (org-trim (concat toc-head
+                      toc-string
+                      toc-tail
+                      contents
+                      "\n"
+                      (org-gfm-footnote-section info)))))
 
 
 ;;; Interactive function
